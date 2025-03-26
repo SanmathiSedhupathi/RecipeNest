@@ -2,13 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: recipe-sharing-service
-  labels:
-    app: recipe-sharing
 spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 8080
-      protocol: TCP
+  type: NodePort
   selector:
     app: recipe-sharing
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30080 
