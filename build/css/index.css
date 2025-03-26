@@ -1,0 +1,89 @@
+
+
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+p{
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.btn-get-started {
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.glow-image {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.glow-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5); /* Glow color */
+  border-radius: 70%; /* Elliptical shape */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.glow-image:hover::before {
+  opacity: 1;
+}
+
+.glow-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 70%; /* Elliptical shape */
+  box-shadow: 0 0 10px rgba(33, 174, 14, 0.8); /* Initial glow effect */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.glow-image:hover img {
+  box-shadow: 0 0 20px rgba(0, 255, 0, 1); /* Stronger glow effect on hover */
+}
+
+.quote {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.glow-image:hover .quote {
+  opacity: 1;
+}
+
+.quote p {
+  font-size: 2rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #000000;
+  margin: 0;
+}
+.glow-container {
+  background-color: #f7f5f5;
+  background-size: cover; 
+  background-position: center; 
+  box-shadow: 0 0 20px rgba(161, 163, 161, 0.8); 
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+
+
+
+
+
