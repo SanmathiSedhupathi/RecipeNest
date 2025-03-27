@@ -1,13 +1,31 @@
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: recipe-sharing-service
+# spec:
+#   type: NodePort
+#   selector:
+#     app: recipe-sharing
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 80
+#       nodePort: 30080 
 apiVersion: v1
 kind: Service
 metadata:
-  name: recipe-sharing-service
+  name: recipe-sharing-metrics
+  labels:
+    app: recipe-sharing-website
 spec:
-  type: NodePort
   selector:
-    app: recipe-sharing
+    app: recipe-sharing-website
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 80
       targetPort: 80
-      nodePort: 30080 
+    - name: metrics
+      protocol: TCP
+      port: 9113
+      targetPort: 9113
