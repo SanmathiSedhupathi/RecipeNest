@@ -1,3 +1,27 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: recipe-sharing-website
+#   labels:
+#     app: recipe-sharing-website
+# spec:
+#   replicas: 3
+#   selector:
+#     matchLabels:
+#       app: recipe-sharing-website
+#   template:
+#     metadata:
+#       labels:
+#         app: recipe-sharing-website
+#     spec:
+#       containers:
+#       - name: recipe-sharing-website
+#         image: sanmathisedhupathi/recipenest:latest
+#         ports:
+#         - containerPort: 80
+#         env:
+#         - name: ENVIRONMENT
+#           value: "production"
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -22,3 +46,11 @@ spec:
         env:
         - name: ENVIRONMENT
           value: "production"
+        
+      # 🔹 Add NGINX Prometheus Exporter as a sidecar container
+      - name: nginx-prometheus-exporter
+        image: nginx/nginx-prometheus-exporter:latest
+        args:
+          - "-nginx.scrape-uri=http://localhost/nginx_status"
+        ports:
+          - containerPort: 9113
