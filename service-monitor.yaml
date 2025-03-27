@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: recipe-sharing-monitor
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: recipe-sharing-website
+  endpoints:
+    - port: metrics
+      interval: 30s
