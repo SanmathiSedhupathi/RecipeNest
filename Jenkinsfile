@@ -24,6 +24,10 @@ pipeline {
                 script {
                     sh 'minikube delete'
                     sh 'minikube start'
+                    sh 'helm repo add prometheus-community https://prometheus-community.github.io/helm-charts'
+                    sh 'helm repo update'
+                    sh 'helm install prometheus prometheus-community/kube-prometheus-stack'
+                    sh 'kubectl get pods -n default'
                     sh 'kubectl apply -f kubernetes/deployment.yaml'
                     sh 'kubectl apply -f kubernetes/service.yaml'
                     sh 'kubectl apply -f kubernetes/ingress.yaml'
